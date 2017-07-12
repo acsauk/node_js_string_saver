@@ -14,7 +14,7 @@ module.exports = {
 
   development: {
     client: 'pg',
-    connection: 'postgres://localhost/notes_saver_test',
+    connection: 'postgres://localhost/notes_saver',
     migrations: {
       directory: __dirname + '/db/migrations'
     },
