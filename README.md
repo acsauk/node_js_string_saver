@@ -9,7 +9,7 @@ so I can access a copy of my notes from anywhere,
 I would like to be able to save a string online
 
 As a user with a bad memory,
-so I can retrieve my notes whenever I need them,
+so I can look at my notes whenever I need them,
 I would like to be able to retrieve my saved strings
 
 As a security conscious user,
