@@ -42,7 +42,6 @@ describe('Note module', () => {
           note_content: 'I am a note!'
         })
         .end(function(err, res) {
-          console.log(res)
           expect(res).to.have.status(200)
           expect(res).to.be.json
           expect(res.body).to.be.a('object')
