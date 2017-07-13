@@ -1,5 +1,7 @@
 'use Strict'
 
+process.env.NODE_ENV = 'test'
+
 const Note = require('./Note')
 
 const chai = require('chai')
@@ -28,13 +30,13 @@ describe('Note module', () => {
       chai.request(server)
         .post('/notes')
         .send({
-          note_contents: 'I am a note!'
+          note_content: 'I am a note!'
         })
         .end(function(err, res) {
           expect(res).to.have.status(200)
           expect(res).to.be.json
           expect(res.body).to.be.a('object')
-          expect(res.body.note_contents).to.eql('I am a note!')
+          expect(res.body.note_content).to.eq('I am a note!')
           done()
         })
     })
