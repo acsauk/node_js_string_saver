@@ -3,9 +3,9 @@
 const Note = require('./Note')
 
 const chai = require('chai')
-const chaiAsPromised = require('chai-as-promised')
+const chaiHttp = require('chai-http')
 
-chai.use(chaiAsPromised)
+chai.use(chaiHttp)
 const expect = chai.expect
 
 const knexConfig = require('../../db/knex')
@@ -18,9 +18,16 @@ describe('Note module', () => {
     })
 
     it('should return a promise', () => {
+
       const noteCreateActualResult = Note.create()
       expect(noteCreateActualResult.then).to.be.a('function')
       expect(noteCreateActualResult.catch).to.be.a('function')
+    })
+
+    it('should add an entry to Notes table', function * () {
+      yield Note.create('I am a note!')
+      // console.log(db('users').count)
+      return expect(db('notes').count('note_content')).to.eventually.eql(20)
     })
   })
 })
