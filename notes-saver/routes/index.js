@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex.js')
 const queries = require('../db/queries.js')
+const request = require('request');
 
 /* GET home page. */
 router.get('/notes', function(req, res, next) {

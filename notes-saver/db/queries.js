@@ -13,7 +13,9 @@ function getSingle(noteId) {
 }
 
 function add(note) {
-  return Notes().insert(note, 'id')
+  console.log(note)
+  let noteData = typeof note != 'object' ? { note_content: note } : note
+  return Notes().insert(noteData, 'id')
 }
 
 module.exports = {
