@@ -6,6 +6,9 @@ const chai = require('chai')
 
 const expect = chai.expect
 
+const knexConfig = require('../../db/knex')
+const db = knexConfig.knex
+
 describe('Note module', () => {
   describe('"create"', () => {
     it('should export a function', () => {

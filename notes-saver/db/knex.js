@@ -1,8 +1,10 @@
 'use Strict'
 
-var environment = process.env.NODE_ENV || 'development'
-var config = require('../knexfile.js')[environment]
+const environment = process.env.NODE_ENV || 'development'
+const config = require('../knexfile.js')[environment]
+const createKnex = require('knex')
+const knex = createKnex(config)
 
 module.exports = {
-  environment, config
+  environment, config, knex
 }
