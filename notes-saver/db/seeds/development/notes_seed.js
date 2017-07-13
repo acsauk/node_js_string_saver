@@ -1,13 +1,12 @@
-
-exports.seed = function(knex, Promise) {
+exports.seed = (knex, Promise) => {
   // Deletes ALL existing entries
   return knex('notes').del()
-    .then(function () {
-      // Inserts seed entries
-      return knex('notes').insert([
-        {id: 1, note_content: 'Note content goes here'},
-        {id: 2, note_content: 'Some more note content goes here'},
-        {id: 3, note_content: 'And yet more note content goes here'}
-      ]);
-    });
+  .then( () => {
+    // Inserts seed entries
+    return knex('notes').insert([
+      {note_content: 'Note content goes here'},
+      {note_content: 'Some more note content goes here'},
+      {note_content: 'And yet more note content goes here'}
+    ]);
+  });
 };

@@ -15,7 +15,16 @@ const db = knexConfig.knex
 const server = require('../../app.js')
 
 describe('Note module', () => {
+
   describe('"create"', () => {
+
+    beforeEach(() => db.migrate.rollback()
+      .then(() => db.migrate.latest())
+      .then(() => db.seed.run())
+    )
+
+    afterEach(() => db.migrate.rollback() )
+
     it('should export a function', () => {
       expect(Note.create).to.be.a('function')
     })
@@ -33,6 +42,7 @@ describe('Note module', () => {
           note_content: 'I am a note!'
         })
         .end(function(err, res) {
+          console.log(res)
           expect(res).to.have.status(200)
           expect(res).to.be.json
           expect(res.body).to.be.a('object')
