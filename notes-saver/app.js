@@ -45,7 +45,7 @@ if (app.get('env') === 'development') {
       error: err
     });
   });
-});
+}
 
 // production handler
 app.use(function(err, req, res, next) {

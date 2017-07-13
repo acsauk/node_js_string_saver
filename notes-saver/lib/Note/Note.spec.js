@@ -10,6 +10,7 @@ const expect = chai.expect
 
 const knexConfig = require('../../db/knex')
 const db = knexConfig.knex
+const server = require('../../app.js')
 
 describe('Note module', () => {
   describe('"create"', () => {
@@ -25,9 +26,7 @@ describe('Note module', () => {
     })
 
     it('should add an entry to Notes table', function * () {
-      yield Note.create('I am a note!')
-      // console.log(db('users').count)
-      return expect(db('notes').count('note_content')).to.eventually.eql(20)
+
     })
   })
 })
