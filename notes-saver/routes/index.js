@@ -4,9 +4,15 @@ const knex = require('../db/knex.js')
 const queries = require('../db/queries.js')
 const request = require('request');
 
-/* GET home page. */
-router.get('/notes', function(req, res, next) {
-  res.send('responds with all notes')
+/* GET specific note. */
+router.get('/notes/:id', function(req, res, next) {
+  queries.getSingle(req.params.id)
+  .then(function(note) {
+    res.status(200).json(note)
+  })
+  .catch(function(error) {
+    next(error)
+  })
 });
 
 // POST add a note
