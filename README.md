@@ -1,8 +1,8 @@
 # node_js_string_saver
 
-A simple node.js app that allows a user to store a string of their choice using a unique identifier and retrieve this back by entering the UID again.
+A simple node.js app that allows a user to store a string of their choice using a unique identifier and retrieve this back by navigating to a URL that corresponds to the note ID.
 
-##User stories - MVP
+## User stories - MVP
 
 As a user with something to say,
 so I can access a copy of my notes from anywhere,
@@ -12,22 +12,40 @@ As a user with a bad memory,
 so I can look at my notes whenever I need them,
 I would like to be able to retrieve my saved strings
 
-As a security conscious user,
-so I can ensure no one else can access my notes
-I would like to use a unique identifier to access my saved strings
+## Nouns / Potential Models
 
-##Nouns / Potential Models
+- User
+- Note
+- String
+- Identifier
 
--User
--Note
--String
--Identifier
+## Verbs / Potential methods
 
-##Verbs / Potential methods
+- Say
+- Access
+- Save
+- Retrieve
+- Look
+- Use
 
--Say
--Access
--Save
--Retrieve
--Look
--Use
+## Installation
+- git clone the repo to your local machine and `cd` to directory
+- `git checkout mvp`
+- `cd notes-save`
+- `npm install`
+
+## Saving a note
+- Navigate to `notes-save` on command line
+- `npm start`
+- In a new terminal pane enter `curl http://localhost:3000/notes -d 'hello, I am a message'`
+- Take a note of the ID in the response message
+
+## Retrieving a note
+- If not already started, navigate to `notes-save` on command line and start the node server `npm start`
+- In a new terminal pane enter `curl http://localhost:3000/notes/<ID SAVED FROM PREVIOUS STEP>`
+- The saved note should be returned as a string
+
+## Tests
+- Navigate to `notes-save` on command line
+- Install dependencies if not already done so with `npm install`
+- Run `npm test`
