@@ -50,8 +50,8 @@ describe('Note module', () => {
       .then(function(res) {
         expect(res).to.have.status(200)
         expect(res).to.be.json
-        expect(res.body).to.be.a('object')
-        expect(res.body.note_content).to.eq('Note content goes here')
+        expect(res.body).to.be.a('string')
+        expect(res.body).to.eq('Note content goes here')
       })
     })
   })

@@ -8,7 +8,7 @@ const request = require('request');
 router.get('/notes/:id', function(req, res, next) {
   queries.getSingle(req.params.id)
   .then(function(note) {
-    res.status(200).json(note)
+    res.status(200).json(note.note_content)
   })
   .catch(function(error) {
     next(error)
