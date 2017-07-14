@@ -16,7 +16,7 @@ const server = require('../../app.js')
 
 describe('Note module', () => {
 
-  describe('"create"', () => {
+  describe('"POST /notes"', () => {
 
     beforeEach(() => db.migrate.rollback()
       .then(() => db.migrate.latest())
@@ -24,16 +24,6 @@ describe('Note module', () => {
     )
 
     afterEach(() => db.migrate.rollback() )
-
-    it('should export a function', () => {
-      expect(Note.create).to.be.a('function')
-    })
-
-    it('should return a promise', () => {
-      const noteCreateActualResult = Note.create()
-      expect(noteCreateActualResult.then).to.be.a('function')
-      expect(noteCreateActualResult.catch).to.be.a('function')
-    })
 
     it('should add an entry to Notes table', (done) => {
       chai.request(server)
