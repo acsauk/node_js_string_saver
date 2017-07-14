@@ -16,14 +16,14 @@ const server = require('../../app.js')
 
 describe('Note module', () => {
 
+  beforeEach(() => db.migrate.rollback()
+    .then(() => db.migrate.latest())
+    .then(() => db.seed.run())
+  )
+
+  afterEach(() => db.migrate.rollback() )
+
   describe('"POST /notes"', () => {
-
-    beforeEach(() => db.migrate.rollback()
-      .then(() => db.migrate.latest())
-      .then(() => db.seed.run())
-    )
-
-    afterEach(() => db.migrate.rollback() )
 
     it('should add an entry to Notes table', (done) => {
       chai.request(server)
