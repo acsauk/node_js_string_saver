@@ -13,8 +13,15 @@ function getSingle(noteId) {
 }
 
 function add(note) {
-  console.log(note)
-  let noteData = typeof note != 'object' ? { note_content: note } : note
+  let noteKey = ''
+  let noteValue = ''
+
+  for (var key in note) {
+    noteKey = key
+    notValue = note[key]
+  }
+
+  let noteData = noteValue == '' ? { note_content: noteKey } : note
   return Notes().insert(noteData, 'id')
 }
 
