@@ -31,21 +31,21 @@ I would like to be able to retrieve my saved strings
 ## Installation
 - git clone the repo to your local machine and `cd` to directory
 - `git checkout mvp`
-- `cd notes-save`
+- `cd notes-saver`
 - `npm install`
 
 ## Saving a note
-- Navigate to `notes-save` on command line
+- Navigate to `notes-saver` on command line
 - `npm start`
 - In a new terminal pane enter `curl http://localhost:3000/notes -d 'hello, I am a message'`
 - Take a note of the ID in the response message
 
 ## Retrieving a note
-- If not already started, navigate to `notes-save` on command line and start the node server `npm start`
+- If not already started, navigate to `notes-saver` on command line and start the node server `npm start`
 - In a new terminal pane enter `curl http://localhost:3000/notes/<ID SAVED FROM PREVIOUS STEP>`
 - The saved note should be returned as a string
 
 ## Tests
-- Navigate to `notes-save` on command line
+- Navigate to `notes-saver` on command line
 - Install dependencies if not already done so with `npm install`
 - Run `npm test`
