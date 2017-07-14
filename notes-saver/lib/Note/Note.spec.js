@@ -6,8 +6,9 @@ const Note = require('./Note')
 
 const chai = require('chai')
 const chaiHttp = require('chai-http')
+const chaiAsPromised = require('chai-as-promised')
 
-chai.use(chaiHttp)
+chai.use(chaiHttp, chaiAsPromised)
 const expect = chai.expect
 
 const knexConfig = require('../../db/knex')
@@ -25,19 +26,24 @@ describe('Note module', () => {
 
   describe('"POST /notes"', () => {
 
-    it('should add an entry to Notes table', (done) => {
-      chai.request(server)
+    it('should add an entry to Notes table', () => {
+      return chai.request(server)
       .post('/notes')
       .send({
         note_content: 'I am a note!'
       })
-      .end(function(err, res) {
+      .then(function(res) {
         expect(res).to.have.status(200)
         expect(res).to.be.json
         expect(res.body).to.be.a('object')
         expect(res.body.note_content).to.eq('I am a note!')
-        done()
       })
     })
   })
+
+
+  // describe('"GET /notes/:id"', () => {
+  //
+  //   it('should get a specific show by id')
+  // })
 })
