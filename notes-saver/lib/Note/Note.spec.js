@@ -6,12 +6,10 @@ const Note = require('./Note')
 
 const chai = require('chai')
 const chaiHttp = require('chai-http')
-const chaiAsPromised = require('chai-as-promised')
 
-chai.use(chaiHttp, chaiAsPromised)
+chai.use(chaiHttp)
 const expect = chai.expect
 
-// const knexConfig = require('../../db/knex')
 const db = require('../../db/knex').knex
 const server = require('../../app.js')
 
