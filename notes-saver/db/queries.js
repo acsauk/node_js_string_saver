@@ -18,7 +18,7 @@ function add(note) {
 
   for (var key in note) {
     noteKey = key
-    notValue = note[key]
+    noteValue = note[key]
   }
 
   let noteData = noteValue == '' ? { note_content: noteKey } : note
