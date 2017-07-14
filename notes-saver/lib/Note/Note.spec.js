@@ -42,8 +42,17 @@ describe('Note module', () => {
   })
 
 
-  // describe('"GET /notes/:id"', () => {
-  //
-  //   it('should get a specific show by id')
-  // })
+  describe('"GET /notes/:id"', () => {
+
+    it('should get a specific note by id', () => {
+      return chai.request(server)
+      .get('/notes/1')
+      .then(function(res) {
+        expect(res).to.have.status(200)
+        expect(res).to.be.json
+        expect(res.body).to.be.a('object')
+        expect(res.body.note_content).to.eq('I am a note!')
+      })
+    })
+  })
 })
