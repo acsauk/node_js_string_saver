@@ -11,8 +11,8 @@ const chaiAsPromised = require('chai-as-promised')
 chai.use(chaiHttp, chaiAsPromised)
 const expect = chai.expect
 
-const knexConfig = require('../../db/knex')
-const db = knexConfig.knex
+// const knexConfig = require('../../db/knex')
+const db = require('../../db/knex').knex
 const server = require('../../app.js')
 
 describe('Note module', () => {
