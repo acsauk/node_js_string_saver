@@ -23,18 +23,36 @@ describe('Note module', () => {
   afterEach(() => db.migrate.rollback() )
 
   describe('"POST /notes"', () => {
-
-    it('should add an entry to Notes table', () => {
-      return chai.request(server)
-      .post('/notes')
-      .send({
-        note_content: 'I am a note!'
+    context('valid string', () => {
+      it('should add an entry to Notes table', () => {
+        return chai.request(server)
+        .post('/notes')
+        .send({
+          note_content: 'I am a note!'
+        })
+        .then(function(res) {
+          expect(res).to.have.status(200)
+          expect(res).to.be.json
+          expect(res.body).to.be.a('object')
+          expect(res.body.note_content).to.eq('I am a note!')
+        })
       })
-      .then(function(res) {
-        expect(res).to.have.status(200)
-        expect(res).to.be.json
-        expect(res.body).to.be.a('object')
-        expect(res.body.note_content).to.eq('I am a note!')
+    })
+
+    context('empty string', () => {
+      it('should not add an entry to Notes table', () => {
+        return chai.request(server)
+        .post('/notes')
+        .send({
+          note_content: ''
+        })
+        .then(function(res) {
+          expect(res).to.have.status(500)
+          expect(res).to.be.json
+          expect(res.body).to.be.a('object')
+          expect(res.body[0]).to.have.property('message')
+          expect(res.body[0]).to.have.property('error')
+        })
       })
     })
   })
