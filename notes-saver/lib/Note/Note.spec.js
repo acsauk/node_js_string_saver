@@ -30,7 +30,7 @@ describe('Note module', () => {
         .send({
           note_content: 'I am a note!'
         })
-        .then(function(res) {
+        .then((res) => {
           expect(res).to.have.status(200)
           expect(res).to.be.json
           expect(res.body).to.be.a('object')
@@ -46,7 +46,7 @@ describe('Note module', () => {
         .send({
           note_content: ''
         })
-        .then(function(res) {
+        .then((res) => {
           expect(res).to.have.status(400)
           expect(res).to.be.json
           expect(res.body).to.be.a('object')
@@ -62,7 +62,7 @@ describe('Note module', () => {
     it('should get a specific note by id', () => {
       return chai.request(server)
       .get('/notes/1')
-      .then(function(res) {
+      .then((res) => {
         expect(res).to.have.status(200)
         expect(res).to.be.json
         expect(res.body).to.be.a('string')
