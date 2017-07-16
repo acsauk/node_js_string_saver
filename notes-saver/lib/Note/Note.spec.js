@@ -74,14 +74,16 @@ describe('Note module', () => {
 
   describe('curlHandler', () => {
     it('should re-format JSON with missing note_content key', () => {
-      const actualResult = Note.curlHandler({'I am a note': ''})
+      const partialJSON = {'I am a note': ''}
+      const actualResult = Note.curlHandler(partialJSON)
       expect(actualResult).to.be.a('object')
       expect(actualResult).to.have.property('note_content')
       expect(actualResult.note_content).to.eq('I am a note')
     })
 
     it('should return original JSON if it contains note_content key', () => {
-      const actualResult = Note.curlHandler({'note_content': 'I am another note'})
+      const completeJSON = {'note_content': 'I am another note'}
+      const actualResult = Note.curlHandler(completeJSON)
       expect(actualResult).to.be.a('object')
       expect(actualResult).to.have.property('note_content')
       expect(actualResult.note_content).to.eq('I am another note')
