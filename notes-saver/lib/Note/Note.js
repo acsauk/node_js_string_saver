@@ -9,7 +9,7 @@ function curlHandler(note) {
     noteValue = note[key]
   }
 
-  let noteData = noteValue == '' ? { note_content: noteKey } : note
+  let noteData = noteValue == '' && noteKey != 'note_content' ? { note_content: noteKey } : note
   return noteData
 }
 

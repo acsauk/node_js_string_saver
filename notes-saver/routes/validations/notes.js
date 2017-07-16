@@ -2,6 +2,6 @@ const joi = require('joi');
 
 module.exports = {
   addNoteSchema: {
-    note_content: joi.string().min(3)
+    note_content: joi.string().required()
   }
 }

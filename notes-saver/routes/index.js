@@ -26,7 +26,7 @@ router.post('/notes', function(req, res, next) {
   });
 
   if (ret.error) {
-    res.status(400).end(ret.error.toString());
+    res.status(400).end(ret.error.toString())
   } else {
   queries.add(ret.value)
     .then(function(noteId) {
@@ -36,7 +36,7 @@ router.post('/notes', function(req, res, next) {
       res.status(200).json(note)
     })
     .catch(function(error) {
-      next(error);
+      next(error)
     })
   }
 })

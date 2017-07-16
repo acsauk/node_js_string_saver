@@ -47,7 +47,7 @@ describe('Note module', () => {
           note_content: ''
         })
         .then(function(res) {
-          expect(res).to.have.status(500)
+          expect(res).to.have.status(400)
           expect(res).to.be.json
           expect(res.body).to.be.a('object')
           expect(res.body[0]).to.have.property('message')
@@ -56,7 +56,6 @@ describe('Note module', () => {
       })
     })
   })
-
 
   describe('"GET /notes/:id"', () => {
 
