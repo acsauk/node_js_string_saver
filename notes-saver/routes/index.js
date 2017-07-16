@@ -1,4 +1,6 @@
 const express = require('express');
+const validate = require('express-validation')
+const validations = require('./validations/notes')
 const router = express.Router();
 const knex = require('../db/knex.js')
 const queries = require('../db/queries.js')

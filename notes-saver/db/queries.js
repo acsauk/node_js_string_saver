@@ -22,6 +22,7 @@ function add(note) {
   }
 
   let noteData = noteValue == '' ? { note_content: noteKey } : note
+
   return Notes().insert(noteData, 'id')
 }
 
