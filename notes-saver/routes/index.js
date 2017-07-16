@@ -1,5 +1,4 @@
 const express = require('express');
-const validate = require('express-validation')
 const validations = require('./validations/notes')
 const Joi = require('Joi')
 const router = express.Router();
