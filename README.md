@@ -30,7 +30,6 @@ I would like to be able to retrieve my saved strings
 
 ## Installation
 - git clone the repo to your local machine and `cd` to directory
-- `git checkout mvp`
 - `cd notes-saver`
 - `npm install`
 
@@ -49,3 +48,7 @@ I would like to be able to retrieve my saved strings
 - Navigate to `notes-saver` on command line
 - Install dependencies if not already done so with `npm install`
 - Run `npm test`
+
+## Todo
+
+Fix failing test that verifies blank strings and refused when sent to /notes POST. This functionality is working but the test relies on a response using `chaiHttp` that isn't received.
