@@ -13,15 +13,6 @@ function getSingle(noteId) {
 }
 
 function add(note) {
-  let noteKey = ''
-  let noteValue = ''
-
-  for (var key in note) {
-    noteKey = key
-    noteValue = note[key]
-  }
-
-  let noteData = noteValue == '' ? { note_content: noteKey } : note
   return Notes().insert(noteData, 'id')
 }
 
