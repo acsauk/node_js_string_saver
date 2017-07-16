@@ -5,6 +5,7 @@ const router = express.Router();
 const knex = require('../db/knex.js')
 const queries = require('../db/queries.js')
 const request = require('request');
+const Note = require('../lib/Note/Note.js')
 
 /* GET specific note. */
 router.get('/notes/:id', function(req, res, next) {
@@ -19,7 +20,7 @@ router.get('/notes/:id', function(req, res, next) {
 
 // POST add a note
 router.post('/notes', function(req, res, next) {
-  queries.add(req.body)
+  queries.add(Note.curlHandler(req.body))
     .then(function(noteId) {
       return queries.getSingle(noteId)
     })

@@ -13,7 +13,7 @@ function getSingle(noteId) {
 }
 
 function add(note) {
-  return Notes().insert(noteData, 'id')
+  return Notes().insert(note, 'id')
 }
 
 module.exports = {
