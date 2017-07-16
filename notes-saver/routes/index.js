@@ -9,18 +9,18 @@ const request = require('request');
 const Note = require('../lib/Note/Note.js')
 
 /* GET specific note. */
-router.get('/notes/:id', function(req, res, next) {
+router.get('/notes/:id',(req, res, next) => {
   queries.getSingle(req.params.id)
-  .then(function(note) {
+  .then((note) => {
     res.status(200).json(note.note_content)
   })
-  .catch(function(error) {
+  .catch((error) => {
     next(error)
   })
 });
 
 // POST add a note
-router.post('/notes', function(req, res, next) {
+router.post('/notes', (req, res, next) => {
   const ret = Joi.validate(Note.curlHandler(req.body), validations.addNoteSchema, {
     abortEarly: false
   });
@@ -29,13 +29,13 @@ router.post('/notes', function(req, res, next) {
     res.status(400).end(ret.error.toString())
   } else {
   queries.add(ret.value)
-    .then(function(noteId) {
+    .then((noteId) => {
       return queries.getSingle(noteId)
     })
-    .then(function(note) {
+    .then((note) => {
       res.status(200).json(note)
     })
-    .catch(function(error) {
+    .catch((error) => {
       next(error)
     })
   }
