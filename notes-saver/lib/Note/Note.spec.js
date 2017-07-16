@@ -84,9 +84,7 @@ describe('Note module', () => {
     it('should return original JSON if it contains note_content key', () => {
       const completeJSON = {'note_content': 'I am another note'}
       const actualResult = Note.curlHandler(completeJSON)
-      expect(actualResult).to.be.a('object')
-      expect(actualResult).to.have.property('note_content')
-      expect(actualResult.note_content).to.eq('I am another note')
+      expect(actualResult).to.eq(completeJSON)
     })
   })
 })
