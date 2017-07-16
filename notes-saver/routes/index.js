@@ -1,6 +1,7 @@
 const express = require('express');
 const validate = require('express-validation')
 const validations = require('./validations/notes')
+const Joi = require('Joi')
 const router = express.Router();
 const knex = require('../db/knex.js')
 const queries = require('../db/queries.js')
@@ -20,7 +21,14 @@ router.get('/notes/:id', function(req, res, next) {
 
 // POST add a note
 router.post('/notes', function(req, res, next) {
-  queries.add(Note.curlHandler(req.body))
+  const ret = Joi.validate(Note.curlHandler(req.body), validations.addNoteSchema, {
+    abortEarly: false
+  });
+
+  if (ret.error) {
+    res.status(400).end(ret.error.toString());
+  } else {
+  queries.add(ret.value)
     .then(function(noteId) {
       return queries.getSingle(noteId)
     })
@@ -30,6 +38,7 @@ router.post('/notes', function(req, res, next) {
     .catch(function(error) {
       next(error);
     })
-  })
+  }
+})
 
 module.exports = router;

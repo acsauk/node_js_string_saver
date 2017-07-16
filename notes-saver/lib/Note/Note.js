@@ -10,7 +10,6 @@ function curlHandler(note) {
   }
 
   let noteData = noteValue == '' ? { note_content: noteKey } : note
-
   return noteData
 }
 
