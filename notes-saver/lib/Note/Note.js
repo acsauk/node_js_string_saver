@@ -1,11 +1,8 @@
 'use Strict'
 
-function create() {
-  return new Promise(function (resolve) {
-    resolve()
-  })
+function curlHandler() {
 }
 
 module.exports = {
-  create
+  curlHandler
 }
