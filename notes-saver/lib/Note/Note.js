@@ -1,7 +1,7 @@
 'use Strict'
 
 function curlHandler() {
-  return {}
+  return {"note_content": ""}
 }
 
 module.exports = {
